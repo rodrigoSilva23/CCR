@@ -1,6 +1,22 @@
-import './index.css';
+import {useDispatch} from 'react-redux';
+import {NavLink}from 'react-router-dom';
+import {showTela} from '../../store/hide_showTela';
 
-function Login () {
+import './index.css';
+export default function Login () {
+
+    const dispatch = useDispatch();
+
+
+    
+
+    function showTelaPessoa(e){    //função usada para Mostra a tela de registro de jovem
+		e.preventDefault();
+		
+        dispatch(showTela());
+        
+
+    }
     return (
         <div className="container     ">
 
@@ -20,7 +36,7 @@ function Login () {
                 
                         <div className="card-body ">
 
-                            <form className="">
+                            <form >
                                 <div className="mb-3">
                                     <label  className="form-label">Login:</label>
                                     <input type="email" className="form-control" id="exampleInputEmail1"  placeholder="E-mail"/>
@@ -29,9 +45,12 @@ function Login () {
                                 <div className="mb-3">
                                     <label for="exampleInputPassword1" className="form-label">Password:</label>
                                     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Informe sua senha"/>
-                                    <a href="#">
-                                        <span className="">Esqueceu sua senha?</span>
-                                    </a>
+                                    <NavLink to="/" >
+                                        <span >Esqueceu sua senha?</span>
+
+                                    </NavLink>
+                                    
+                                    
                                 </div>
                                 <div className="mb-3">
                                 
@@ -42,11 +61,11 @@ function Login () {
                             </form>
 
                             <div className="border-top  mt-2">
-                                <h1 className="text-center text-success">cadastre-se</h1>
+                                <h1 className="text-center text-success">Cadastre-se</h1>
                                 <div className="d-flex justify-content-center ">
 
-                                    <button type="submit" className="btn btn-success me-3 px-3">Jovens</button>
-                                    <button type="submit" className="btn btn-primary">Empresas</button>
+                                    <button onClick={showTelaPessoa} className="btn btn-success me-3 px-3">Jovens</button>
+                                    <button  onClick={showTelaPessoa} className="btn btn-primary">Empresas</button>
 
                                 </div>
 
@@ -79,4 +98,3 @@ function Login () {
      
 };
 
-export default Login;
